@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Doctor>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var errorMsg = (ViewBag.ErrorMessage == null) ? "" : ViewBag.ErrorMessage;
+    var msg = (ViewBag.Message == null) ? "" : ViewBag.Message;
+    var alertMsg = (ViewBag.AlertMessage == null) ? "" : ViewBag.AlertMessage;
+}
+<h1>Agendar Cita</h1>
+    <div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <select class="form-select" aria-label="Doctor" id="doctor" onchange="cambioFechaDoctor()" >
+            @foreach (var obj in Model)
+            {
+                 <option value="@obj.Id">@obj.Nombre</option>
+            }
+            </select>
+        </div>
+        <div class="col-4">
+            <div class="input-group flex-nowrap">
+                <input type="date" min="@DateTime.Now" onchange="cambioFechaDoctor()"  class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="addon-wrapping" id="fecha">
+            </div>
+        </div>
+        <div class="col-2">
+            <select class="form-select" aria-label="Hora de la cita" id="hora">
+             </select>
+        </div>
+    </div>
+    <div class="row pt-4">
+        <div class="col-6">
+            <div class="input-group flex-nowrap">
+                <input type="text" class="form-control" placeholder="Nombre Paciente" aria-label="Nombre" aria-describedby="addon-wrapping" id="pacienteNombre">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="input-group flex-nowrap">
+                <input type="text" class="form-control" placeholder="Correo" aria-label="Correo" aria-describedby="addon-wrapping" id="pacienteCorreo">
+            </div>
+        </div>
+    </div>
+    <div class="row pt-4">
+        <button type="button" class="btn btn-success align-content-end" onclick="guardar()" >Guardar</button>
+    </div>
+</div>
+
+
+<script src="~/js/Cita.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/toastr/toastr.min.js?v=<@Guid.NewGuid().ToString()"></script>
+

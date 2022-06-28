@@ -1,0 +1,45 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    var errorMsg = (ViewBag.ErrorMessage == null) ? "" : ViewBag.ErrorMessage;
+    var msg = (ViewBag.Message == null) ? "" : ViewBag.Message;
+    var alertMsg = (ViewBag.AlertMessage == null) ? "" : ViewBag.AlertMessage;
+}
+
+<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="container">
+      <div class="card login-card">
+        <div class="row no-gutters">
+          @*<div class="col-md-5">
+            <img src="~/assets/images/login.jpg" alt="login" class="login-card-img">
+          </div>*@
+          <div class="col-md-7">
+            <div class="card-body">
+              <div class="brand-wrapper">
+                <img src="~/assets/images/logo.svg" alt="logo" class="logo">
+              </div>
+              @*<p class="login-card-description">Citas</p>*@
+              <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState()"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  @*<fb:login-button scope="public_profile,email" onlogin="checkLoginState()">
+</fb:login-button>*@
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v14.0&appId=368371445219466&autoLogAppEvents=1" nonce="rIvmTs3q"></script>
+      <script src="~/lib/jquery/dist/jquery.min.js?v=<@Guid.NewGuid().ToString()"></script>
+      <script src="~/toastr/toastr.min.js?v=<@Guid.NewGuid().ToString()"></script>
+      <link rel="stylesheet" href="~/toastr/toastr.min.css?v=<@Guid.NewGuid().ToString()" />
+              <script src="~/js/Login.js"></script>
+  <script type="text/javascript" language="JavaScript">
+   
+
+
+        
+             
+    </script>

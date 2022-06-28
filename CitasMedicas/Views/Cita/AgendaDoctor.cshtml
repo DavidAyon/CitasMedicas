@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Doctor>
+@{
+}
+<h1>Agenda Doctor</h1>
+    <div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <select class="form-select" aria-label="Doctor" id="doctor" >
+            @foreach (var obj in Model)
+            {
+                 <option value="@obj.Id">@obj.Nombre</option>
+            }
+            </select>
+        </div>
+        <div class="col-4">
+            <div class="input-group flex-nowrap">
+                <input type="date" min="@DateTime.Now" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="addon-wrapping" id="fecha">
+            </div>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-success align-content-end" onclick="Consultar()"  >Consultar</button>
+        </div>
+    </div>
+    <table class="table" id="table_id">
+                <thead>
+                  <tr>
+                    <th>HORA</th>
+                    <th>PACIENTE</th>
+                    <th>CORREO</th>
+                  </tr>
+                </thead>
+                <tbody >
+                    <tr>
+                   <th ></th>
+                    <th ></th>
+                    <th ></th>
+                  </tr>  
+                </tbody>
+              </table>
+</div>
+
+
+<script src="~/js/Agenda.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/toastr/toastr.min.js?v=<@Guid.NewGuid().ToString()"></script>
+
+                <script type="text/javascript" language="JavaScript">
+  
+
+
+  $(function() {
+
+    $('#table_id').DataTable({
+      searching: false,
+      paging: false,
+      info: false
+    });
+  });    
+     
+</script>
